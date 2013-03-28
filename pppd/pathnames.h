@@ -18,9 +18,12 @@
 #define _ROOT_PATH 
 //#endif
 
-#define _PATH_UPAPFILE 	 _ROOT_PATH "/etc/ppp/pap-secrets"
-#define _PATH_CHAPFILE 	 _ROOT_PATH "/etc/ppp/chap-secrets"
-#define _PATH_SRPFILE 	 _ROOT_PATH "/etc/ppp/srp-secrets"
+#define _PATH_UPAPFILE 	 _ROOT_PATH "/data/system/pap-secrets"
+#define _PATH_CHAPFILE 	 _ROOT_PATH "/data/system/chap-secrets"
+#define _PATH_SRPFILE 	 _ROOT_PATH "/data/system/srp-secrets"
+//#define _PATH_UPAPFILE 	 _ROOT_PATH "/etc/ppp/pap-secrets"
+//#define _PATH_CHAPFILE 	 _ROOT_PATH "/etc/ppp/chap-secrets"
+//#define _PATH_SRPFILE 	 _ROOT_PATH "/etc/ppp/srp-secrets"
 #define _PATH_SYSOPTIONS _ROOT_PATH "/etc/ppp/options"
 #define _PATH_IPUP	 _ROOT_PATH "/etc/ppp/ip-up"
 #define _PATH_IPDOWN	 _ROOT_PATH "/etc/ppp/ip-down"

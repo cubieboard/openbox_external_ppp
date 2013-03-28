@@ -1,0 +1,25 @@
+#!/system/bin/sh
+
+PPPD_EXIT=""
+
+IFACE=$1
+USERNAME=$2
+
+/system/bin/setprop "net.pppoe.ppp-exit" ""
+/system/bin/setprop "net.pppoe.reason" ""
+/system/bin/setprop "net.pppoe.interface" ""
+
+/system/bin/log -t aw-pppoe "Starting pppd"
+
+/system/bin/pppd pty "system/bin/pppoe -p /etc/ppp/pppoe.pid -I $IFACE -T 80 -U -m 1412" \
+			noipdefault noauth default-asyncmap nodefaultroute hide-password nodetach \
+			usepeerdns mtu 1492 mru 1492 noaccomp nodeflate nopcomp novj novjccomp user \
+			$USERNAME lcp-echo-interval 10 lcp-echo-failure 2 linkname pppoe
+
+PPPD_EXIT=$?
+
+#/system/bin/log -t aw-pppoe "pppd exited with $PPPD_EXIT"
+
+/system/bin/setprop "net.pppoe.ppp-exit" "$PPPD_EXIT"
+/system/bin/setprop "net.pppoe.reason" "gone"
+/system/bin/setprop "net.pppoe.interface" ""
